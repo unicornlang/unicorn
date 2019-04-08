@@ -116,7 +116,7 @@ int main(){
      name = "John";
      data = JSON_new();
      data.set_number("foo",1);
-     data.set_string("bar","abc);
+     data.set_string("bar","abc");
      data.set_string("name",name);
      printf(data.get("name").as_str());
      return 0;
