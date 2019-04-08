@@ -14,6 +14,7 @@ class Foo{
         f.x = "Foo";
         return f;
      }
+     
      blah(self){
         printf(self.f)
      }
