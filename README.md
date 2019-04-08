@@ -70,3 +70,38 @@ int main() {
      return 0;
 }
 ```
+
+# Useful Macros
+
+```rust
+use "json"
+
+int main(){
+     let name = "John";
+     let data = json!({
+          foo:1,
+          bar:"abc",
+          name:name
+     });
+     printf(data.get("name").as_str());
+     return 0;
+}
+```
+
+trancompiles to
+
+```
+#include "json"
+
+int main(){
+     struct JSON *data;
+     char *name;
+     name = "John";
+     data = JSON_new();
+     data.set_number("foo",1);
+     data.set_string("bar","abc);
+     data.set_string("name",name);
+     printf(data.get("name").as_str());
+     return 0;
+}
+```
