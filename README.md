@@ -30,6 +30,7 @@ is trancompiled into
 
 ```C
 //foo.h
+
 #IFNDEF FOO_H
 #DEFINE FOO_H
 
@@ -46,6 +47,7 @@ struct Foo *Foo_create();
 
 ```C
 //foo.c
+
 struct Foo *Foo_create() {
   struct Foo *f;
   f = malloc(sizeof(Foo));
