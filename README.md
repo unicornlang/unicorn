@@ -74,6 +74,9 @@ int main() {
 # Useful Macros
 
 ```rust
+//foo.u
+
+use "stdio"
 use "json"
 
 int main(){
@@ -91,7 +94,21 @@ int main(){
 trancompiles to
 
 ```C
-#include "json"
+//foo.h
+
+#ifndef FOO_H
+#define FOO_H
+
+#include "stdio.h"
+#include "json.h"
+
+#endif FOO_H
+```
+
+```C
+//foo.c
+
+#include "foo.h"
 
 int main(){
      struct JSON *data;
