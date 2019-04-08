@@ -1,4 +1,4 @@
-#Unicorn🦄
+# Unicorn🦄
 
 Unicorn is a language built to trancompile to object oriented C code that is idiomatic and readable.
 
@@ -8,6 +8,7 @@ use "stdlib"
 
 class Foo{
      msg:string
+     
      pub create() -> Foo {
         let f = new Foo;
         f.x = "Foo";
@@ -24,6 +25,7 @@ is trancompiled into
 //foo.h
 #IFNDEF FOO_H
 #DEFINE FOO_H
+
 #include "stdlib.h"
 
 struct Foo {
