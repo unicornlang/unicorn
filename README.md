@@ -7,7 +7,7 @@ Example:
 use "stdio"
 
 struct Foo{
-     string msg;
+     str msg;
      
      pub create() -> Foo {
         let f = new Foo;
