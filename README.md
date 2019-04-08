@@ -2,6 +2,10 @@
 
 Unicorn is a language built to trancompile to object oriented C code that is idiomatic and readable.
 
+```
+unicorn foo.u
+```
+
 Example:
 ```rust
 use "stdio"
