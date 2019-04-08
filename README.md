@@ -46,7 +46,8 @@ struct Foo *Foo_create() {
   return f;
 }
 
-Foo_blah(struct Foo *self) {
+void Foo_blah(struct Foo *self) {
   printf(self.f);
+  return;
 }
 ```
