@@ -41,7 +41,7 @@ is trancompiled into
 #include "stdio.h"
 
 struct Foo {
-  char *msg;
+     char *msg;
 }
 
 struct Foo *Foo_create();
@@ -53,15 +53,15 @@ struct Foo *Foo_create();
 //foo.c
 
 struct Foo *Foo_create() {
-  struct Foo *f;
-  f = malloc(sizeof(Foo));
-  f.x = "Foo";
-  return f;
+     struct Foo *f;
+     f = malloc(sizeof(Foo));
+     f.x = "Foo";
+     return f;
 }
 
 void Foo_blah(struct Foo *self) {
-  printf(self.f);
-  return;
+     printf(self.f);
+     return;
 }
 
 int main() {
