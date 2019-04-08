@@ -14,7 +14,7 @@ struct Foo {
      str msg;
      
      pub create() -> Foo {
-        let f = new Foo;
+        let mut f = new Foo;
         f.x = "Foo";
         return f;
      }
@@ -25,7 +25,7 @@ struct Foo {
 }
 
 int main(){
-     let f = Foo::create();
+     let mut f = Foo::create();
      f.blah();
      return 0;
 }
