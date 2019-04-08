@@ -1,6 +1,6 @@
 # Unicorn🦄
 
-Unicorn is a language built to trancompile to object oriented C code that is idiomatic and readable.
+Unicorn is a programming language built to trancompile to object oriented C code that is idiomatic and readable.
 
 ```console
 unicorn foo.u
