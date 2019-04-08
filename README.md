@@ -90,7 +90,7 @@ int main(){
 
 trancompiles to
 
-```
+```C
 #include "json"
 
 int main(){
