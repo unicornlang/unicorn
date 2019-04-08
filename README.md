@@ -6,7 +6,7 @@ Example:
 ```rust
 use "stdio"
 
-struct Foo{
+struct Foo {
      str msg;
      
      pub create() -> Foo {
@@ -15,7 +15,7 @@ struct Foo{
         return f;
      }
      
-     blah(self){
+     blah(self) {
         printf(self.f)
      }
 }
@@ -58,7 +58,7 @@ void Foo_blah(struct Foo *self) {
   return;
 }
 
-int main(){
+int main() {
      struct Foo *f = Foo_create();
      f.blah();
      return 0;
