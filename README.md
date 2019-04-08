@@ -9,7 +9,7 @@ use "stdio"
 struct Foo{
      str msg;
      
-     pub create() -> Foo {
+     pub create() -> Foo* {
         let f = new Foo;
         f.x = "Foo";
         return f;
