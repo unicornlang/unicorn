@@ -6,8 +6,8 @@ Example:
 ```rust
 use "stdio"
 
-class Foo{
-     msg:string
+struct Foo{
+     string msg;
      
      pub create() -> Foo {
         let f = new Foo;
