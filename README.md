@@ -19,6 +19,12 @@ struct Foo{
         printf(self.f)
      }
 }
+
+int main(){
+     let f = Foo::create();
+     f.blah();
+     return 0;
+}
 ```
 is trancompiled into
 
@@ -50,5 +56,11 @@ struct Foo *Foo_create() {
 void Foo_blah(struct Foo *self) {
   printf(self.f);
   return;
+}
+
+int main(){
+     struct Foo *f = Foo_create();
+     f.blah();
+     return 0;
 }
 ```
