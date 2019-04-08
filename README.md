@@ -35,8 +35,8 @@ is trancompiled into
 ```C
 //foo.h
 
-#IFNDEF FOO_H
-#DEFINE FOO_H
+#ifndef FOO_H
+#define FOO_H
 
 #include "stdio.h"
 
@@ -46,7 +46,7 @@ struct Foo {
 
 struct Foo *Foo_create();
 
-#ENDIF FOO_H
+#endif FOO_H
 ```
 
 ```C
