@@ -3,7 +3,7 @@
 Unicorn is a programming language built to trancompile to object oriented C code that is idiomatic and readable.
 
 ```console
-unicorn foo.u
+unicorn foo.u -o foo.c
 ```
 
 Example:
