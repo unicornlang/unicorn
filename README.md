@@ -68,6 +68,8 @@ void Foo_blah(struct Foo *self) {
 int main() {
      struct Foo *f = Foo_create();
      f.blah();
+     free(f.msg);
+     free(f);
      return 0;
 }
 ```
