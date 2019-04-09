@@ -13,13 +13,13 @@ use "stdio"
 struct Foo {
      str msg;
      
-     pub create() -> Foo {
+     pub Foo create() {
         let mut f = new Foo;
         f.x = "Foo";
         return f;
      }
      
-     blah(ref self) {
+     void blah(ref self) {
         printf(self.f)
      }
 }
@@ -136,3 +136,16 @@ int main(){
 ```
 
 # Ownership enforcement
+
+```rust
+void a(Foo f){
+     ...
+}
+
+//foo.u
+int main(){
+     let f = Foo::create();
+     a(f);
+     a(f); // Error: used variable after claimed ownership
+}
+```
