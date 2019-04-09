@@ -131,7 +131,7 @@ int main(){
      let mut b = 1;
      b = 2; // works
      let a = 1;
-     a = 2; // throws an error
+     a = 2; // Error: a not mutable
 }
 ```
 
