@@ -13,7 +13,7 @@ use "stdio"
 struct Foo {
      str msg;
      
-     pub Foo create() {
+     pub Foo* create() {
         let mut f = new Foo;
         f.x = "Foo";
         return f;
@@ -145,11 +145,11 @@ int main(){
 # Ownership enforcement
 
 ```rust
-void a(ref Foo f){
+void a(ref Foo *f){
      ...
 }
 
-void b(Foo f){
+void b(Foo *f){
      ...
 }
 
