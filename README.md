@@ -165,7 +165,7 @@ int main(){
 # Exporting 
 
 ```rust
-export void foo(bytes msg){
+export void foo(bytes data){
      ...
 }
 ```
@@ -173,7 +173,7 @@ export void foo(bytes msg){
 ```C
 //foo.c
 
-__attribute__((visibility("default"))) void foo(char *msg){
+__attribute__((visibility("default"))) void foo(char *data){
      ...
 }
 ```
