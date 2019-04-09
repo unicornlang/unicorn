@@ -35,15 +35,10 @@ is trancompiled into
 
 ```C
 //foo.h
-<<<<<<< HEAD
-#IFNDEF FOO_H
-#DEFINE FOO_H
-=======
 
 #ifndef FOO_H
 #define FOO_H
 
->>>>>>> 06835c12a4bf96dcbed1b1467885d81a945b2630
 #include "stdio.h"
 
 struct Foo {
