@@ -142,7 +142,7 @@ void a(ref Foo f){
      ...
 }
 
-void a(Foo f){
+void b(Foo f){
      ...
 }
 
