@@ -65,11 +65,15 @@ void Foo_blah(struct Foo *self) {
      return;
 }
 
+void Foo_delete(struct Foo *self) {
+     free(f.msg);
+     free(f);
+}
+
 int main() {
      struct Foo *f = Foo_create();
      f.blah();
-     free(f.msg);
-     free(f);
+     f.delete();
      return 0;
 }
 ```
