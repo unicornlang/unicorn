@@ -4,7 +4,7 @@ Unicorn is a language built to trancompile to object oriented C code that is idi
 
 Example:
 ```rust
-use "stdlib"
+use "stdio"
 
 class Foo{
      msg:string
@@ -24,7 +24,7 @@ is trancompiled into
 //foo.h
 #IFNDEF FOO_H
 #DEFINE FOO_H
-#include "stdlib.h"
+#include "stdio.h"
 
 struct Foo {
   char *msg;
