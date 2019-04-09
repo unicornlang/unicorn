@@ -19,7 +19,7 @@ struct Foo {
         return f;
      }
      
-     void blah(ref self) {
+     void blah(self) {
         printf(self.f)
      }
 }
