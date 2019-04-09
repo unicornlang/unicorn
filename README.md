@@ -27,6 +27,7 @@ struct Foo {
 int main(){
      let mut f = Foo::create();
      f.blah();
+     destroy f;
      return 0;
 }
 ```
