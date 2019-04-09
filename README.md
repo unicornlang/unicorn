@@ -19,7 +19,7 @@ struct Foo {
         return f;
      }
      
-     blah(self) {
+     blah(ref self) {
         printf(self.f)
      }
 }
@@ -134,3 +134,5 @@ int main(){
      a = 2; // throws an error
 }
 ```
+
+# Ownership enforcement
