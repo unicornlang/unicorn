@@ -123,7 +123,7 @@ int main(){
 }
 ```
 
-# Immutability enforcement
+# Mutability enforcement
 
 ```rust
 //foo.u
