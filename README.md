@@ -138,6 +138,10 @@ int main(){
 # Ownership enforcement
 
 ```rust
+void a(ref Foo f){
+     ...
+}
+
 void a(Foo f){
      ...
 }
@@ -146,6 +150,7 @@ void a(Foo f){
 int main(){
      let f = Foo::create();
      a(f);
-     a(f); // Error: used variable after claimed ownership
+     b(f);
+     b(f); // Error: used variable after claimed ownership
 }
 ```
