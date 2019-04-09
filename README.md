@@ -1,6 +1,6 @@
 # Unicorn🦄
 
-Unicorn is a programming language that trancompiles to object oriented C code that is idiomatic and readable. The `unicorn` command also offers useful library agnostic helper macros, optional data mutability and ownership checks, and can generate documentation that uses markdown.
+Unicorn is a programming language that trancompiles to object oriented C code that is idiomatic and readable. The `unicorn` command also offers useful library agnostic helper macros, data mutability and ownership checks, and can generate documentation that uses markdown.
 
 ```console
 unicorn foo.u -o foo.c
