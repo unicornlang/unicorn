@@ -165,7 +165,7 @@ int main(){
 # Exporting 
 
 ```rust
-export void foo(str msg){
+export void foo(bytes msg){
      ...
 }
 ```
