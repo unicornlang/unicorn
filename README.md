@@ -161,3 +161,20 @@ int main(){
      b(f); // Error: used variable after claimed ownership
 }
 ```
+
+# Exporting 
+
+```rust
+export void foo(str msg){
+     ...
+}
+```
+
+```C
+//foo.c
+
+__attribute__((visibility("default"))) void foo(char *msg){
+     ...
+}
+```
+
