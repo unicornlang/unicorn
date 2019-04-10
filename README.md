@@ -166,16 +166,20 @@ trancompiles to
 #include "foo.h"
 
 VNode * component(){
-     return VNode_h(Vnode{
-          .type=VNODE_NODE, 
-          .node=VNodeElement{
-               .tag = "div"
-               .props = NULL,
-               .children = Vnode[]{ VNode{
-                   .type=VNODE_TEXT, 
-                   .text = "HelloWorld}
-                   },NULL}
-     }
+     struct VNode *v0;
+     struct VNode **v0_children;
+     struct VNode *v1;
+     v1 = malloc(sizeof(VNode));
+     v1.type = VNODE_TEXT;
+     v1.text = "Hello World!";
+     v0_children = malloc(sizeof(VNode*)*2);
+     v0_children[0] = v1;
+     v0_children[1] = NULL;
+     v0 = malloc(sizeof(VNode);
+     v0.type = VNODE_NODE;
+     v0.props = NULL;
+     v0.children = v0_children;
+     return v0;
 }
 ```
 
