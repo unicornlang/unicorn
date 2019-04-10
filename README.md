@@ -82,6 +82,9 @@ int main() {
 
 # Useful Macros
 
+Unicorn provides macros for efficient structured data.
+
+## JSON
 ```rust
 //foo.u
 
@@ -129,6 +132,50 @@ int main(){
      data.set_string("name",name);
      printf(data.get("name").as_str());
      return 0;
+}
+```
+## JSX
+```rust
+//foo.u
+
+use "stdio"
+use "vnode"
+
+VNode * component(){
+     return html!(<div>Hello World<div>)
+}
+```
+
+trancompiles to
+
+```C
+//foo.h
+
+#ifndef FOO_H
+#define FOO_H
+
+#include "stdio.h"
+#include "vnode.h"
+
+#endif FOO_H
+```
+
+```C
+//foo.c
+
+#include "foo.h"
+
+VNode * component(){
+     return VNode_h(Vnode{
+          .type=VNODE_NODE, 
+          .node=VNodeElement{
+               .tag = "div"
+               .props = NULL,
+               .children = Vnode[]{ VNode{
+                   .type=VNODE_TEXT, 
+                   .text = "HelloWorld}
+                   },NULL}
+     }
 }
 ```
 
