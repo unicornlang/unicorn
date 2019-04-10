@@ -2,7 +2,7 @@
 
 Unicorn is a programming language that trancompiles to object oriented C code that is idiomatic and readable. The `unicorn` command also offers a library agnostic helper macro for JSON and JSX, data mutability and ownership checks, and can generate documentation that uses markdown.
 
-`unicorn` isn't meant to be used as a compiler, but as a tool for accelerating writing and documenting C in manner that matches a common conceptual level of object oriented C and provide some useful checks along the way. It can be used totally side by side with normal C and abandoned easily (if more distraction than it's worth) leaving clean readable C. Linguistically, unicorn changes very little about C99 and is primarily oriented toward structure, inferences, checks, and shortcuts of the existing spec. This project is not meant to replace C, but to augment one's experience with C.
+Unicorn can be used totally side by side with normal C and abandoned easily (if more distraction than it's worth) leaving clean readable C. Linguistically, unicorn is a superset of C99 and does not hamper your ability to write C99 and is primarily oriented toward structure, inferences, checks, and shortcuts of the existing spec. This project is meant to augment one's experience with C.
 
 ```console
 unicorn foo.u -o foo.c
