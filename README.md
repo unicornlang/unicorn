@@ -1,6 +1,8 @@
 # Unicorn🦄
 
-Unicorn is a programming language that trancompiles to object oriented C code that is idiomatic and readable. The `unicorn` command also offers useful library agnostic helper macros, data mutability and ownership checks, and can generate documentation that uses markdown.
+Unicorn is a programming language that trancompiles to object oriented C code that is idiomatic and readable. The `unicorn` command also offers a library agnostic helper macro for JSON and JSX, data mutability and ownership checks, and can generate documentation that uses markdown.
+
+Unicorn can be used totally side by side with normal C and abandoned easily (if more distraction than it's worth) leaving clean readable C. Linguistically, unicorn is a superset of C99 and does not hamper your ability to write C99 and is primarily oriented toward structure, inferences, checks, and shortcuts of the existing spec. This project is meant to augment one's experience with C.
 
 ```console
 unicorn foo.u -o foo.c
@@ -35,15 +37,10 @@ is trancompiled into
 
 ```C
 //foo.h
-<<<<<<< HEAD
-#IFNDEF FOO_H
-#DEFINE FOO_H
-=======
 
 #ifndef FOO_H
 #define FOO_H
 
->>>>>>> 06835c12a4bf96dcbed1b1467885d81a945b2630
 #include "stdio.h"
 
 struct Foo {
@@ -85,6 +82,9 @@ int main() {
 
 # Useful Macros
 
+Unicorn provides macros for efficient structured data.
+
+## JSON
 ```rust
 //foo.u
 
@@ -132,6 +132,54 @@ int main(){
      data.set_string("name",name);
      printf(data.get("name").as_str());
      return 0;
+}
+```
+## JSX
+```rust
+//foo.u
+
+use "stdio"
+use "vnode"
+
+VNode * component(){
+     return html!(<div>Hello World<div>)
+}
+```
+
+trancompiles to
+
+```C
+//foo.h
+
+#ifndef FOO_H
+#define FOO_H
+
+#include "stdio.h"
+#include "vnode.h"
+
+#endif FOO_H
+```
+
+```C
+//foo.c
+
+#include "foo.h"
+
+VNode * component(){
+     struct VNode *v0;
+     struct VNode **v0_children;
+     struct VNode *v1;
+     v1 = malloc(sizeof(VNode));
+     v1.type = VNODE_TEXT;
+     v1.text = "Hello World!";
+     v0_children = malloc(sizeof(VNode*)*2);
+     v0_children[0] = v1;
+     v0_children[1] = NULL;
+     v0 = malloc(sizeof(VNode);
+     v0.type = VNODE_NODE;
+     v0.props = NULL;
+     v0.children = v0_children;
+     return v0;
 }
 ```
 
