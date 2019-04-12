@@ -1,0 +1,38 @@
+// Implied whitespace
+WHITESPACE = _{ " " | NEWLINE }
+COMMENT = _{ "/*" ~ (!"*/" ~ ANY)* ~ "*/" }
+
+// Primitives
+alpha = @{ 'a'..'z' | 'A'..'Z' }
+digit = @{ '0'..'9' }
+num = @{digit+}
+
+// Basic tokens
+ident = @{ alpha ~ (alpha | digit)* }
+text = @{
+    "\""
+    ~ text_character*
+    ~ "\""
+}
+text_character = {
+    !"\""
+    ~ ANY
+}
+basic_type = {ident~("*"*)?}
+
+// Expressions
+expression = {num}
+
+// Statements
+statement = { basic_type~ident ~"="~expression~";"}
+statements = {statement*}
+
+// Top level statements
+parameter = {basic_type~ident}
+function = {basic_type~ident~"("~(parameter~(","~parameter)*)?~")"~"{"~statements~"}"}
+using = {"use"~text}
+structure = {"struct"~ident~"{"~function*~"}"}
+top_level = { function|structure|using }
+
+//Entry
+program = { top_level* }
