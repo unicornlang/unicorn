@@ -5,7 +5,8 @@ COMMENT = _{ "/*" ~ (!"*/" ~ ANY)* ~ "*/" }
 // Primitives
 alpha = @{ 'a'..'z' | 'A'..'Z' }
 digit = @{ '0'..'9' }
-num = @{digit+}
+num = @{ int ~ ("." ~ ASCII_DIGIT*)? ~ (^"e" ~ int)? }
+int = { ("+" | "-")? ~ ASCII_DIGIT+ }
 
 // Basic tokens
 ident = @{ alpha ~ (alpha | digit)* }
@@ -21,18 +22,27 @@ text_character = {
 basic_type = {ident~("*"*)?}
 
 // Expressions
-expression = {num}
+add = {"+"}
+subtract = {"-"}
+multiply = {"/"}
+divide = {"*"}
+operation = _{ add | subtract | multiply | divide }
+term = _{ num | "(" ~ expr ~ ")" | ident~"(" ~ expr ~ ")" }
+expr = { term ~ (operation ~ term)* }
 
 // Statements
-statement = { basic_type~ident ~"="~expression~";"}
+mutable  = {"mut"}
+statement = { basic_type~mutable?~ident ~"="~expr~";"}
 statements = {statement*}
 
 // Top level statements
-parameter = {basic_type~ident}
-function = {basic_type~ident~"("~(parameter~(","~parameter)*)?~")"~"{"~statements~"}"}
+referant = {"ref"}
+self_referant = {"self"}
+parameter = {referant?~mutable?~basic_type~ident}
+function = {("export")? ~ basic_type~ident~"("~(self_referant~",")?~(parameter~(","~parameter)*)?~")"~"{"~statements~"}"}
 using = {"use"~text}
 structure = {"struct"~ident~"{"~function*~"}"}
 top_level = { function|structure|using }
 
 //Entry
-program = { top_level* }
+program = { SOI ~ top_level* ~ EOI }
