@@ -7,6 +7,12 @@ Unicorn can be used totally side by side with normal C and abandoned easily (if 
 ```bash
 unicorn .  #process all .u files in this directory and subdirectories
 ```
+# Beautiful types
+
+`byte` transpires to `char`
+
+`bool` transpires to `_Bool`
+
 # Packaging
 Unicorn files specify what package they belong to. Other files in the same directory with the same package will be compiled into the same `<package-name>.h` and `<package-name>.c` files. This allows your logic to be segmented into multiple files.
 
