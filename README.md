@@ -4,8 +4,8 @@ Unicorn is a programming language that trancompiles to object oriented C code th
 
 Unicorn can be used totally side by side with normal C and abandoned easily (if more distraction than it's worth) leaving clean readable C. Linguistically, unicorn is a superset of C99 and does not hamper your ability to write C99 and is primarily oriented toward structure, inferences, checks, and shortcuts of the existing spec. This project is meant to augment one's experience with C.
 
-```console
-unicorn .  #procdess all .u files in this directory and subdirectories
+```bash
+unicorn .  #process all .u files in this directory and subdirectories
 ```
 
 Example:
