@@ -148,6 +148,37 @@ struct Bar {
 }
 ```
 
+is trancompiled into
+
+```C
+//foo.h
+
+#ifndef BAR_H
+#define BAR_H
+
+struct Bar {
+     char *msg;
+     int count;
+}
+
+void Bar_foo();
+void Bar_boo();
+
+#endif BAR_H
+```
+
+```C
+//foo.c
+
+void Bar_foo() {
+     ...
+}
+
+void Bar_boo() {
+     ...
+}
+```
+
 # Useful Macros
 
 Unicorn provides macros for efficient structured data.
