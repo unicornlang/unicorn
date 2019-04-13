@@ -260,7 +260,7 @@ int main(){
 ```
 
 # Exporting 
-
+Easily export functions to users of your library.
 ```go
 package foo
 
@@ -277,3 +277,24 @@ __attribute__((visibility("default"))) void foo(char *data){
 }
 ```
 
+# Initialization 
+Easily specify a package initializer that runs before main is called
+```go
+package foo
+
+str secret;
+
+init {
+     secret = "open sesame"
+}
+```
+
+```C
+//foo.c
+
+char * secret;
+
+__attribute__ ((constructor)) void __foo_package_init(){
+     secret = "open sesame";
+}
+```
