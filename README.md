@@ -50,6 +50,8 @@ void bar(){
 ```
 
 # Structure Methods
+Methods can now be placed in structures to cognitively align your function names with code files.
+
 ```go
 package foo
 import "stdio"
