@@ -71,8 +71,7 @@ struct Foo {
 int main(){
      let f = Foo::create();
      f.blah();
-     delete f;
-     return 0;
+     ...
 }
 ```
 is trancompiled into
@@ -109,15 +108,9 @@ void Foo_blah(struct Foo *self) {
      return;
 }
 
-void Foo_delete(struct Foo *self) {
-     free(f.msg);
-     free(f);
-}
-
 int main() {
      struct Foo *f = Foo_create();
      f.blah();
-     f.delete();
      return 0;
 }
 ```
@@ -175,6 +168,63 @@ void Bar_foo() {
 }
 
 void Bar_boo() {
+     ...
+}
+```
+
+
+# Structure Deletion
+Structure deletion helps recursively free memory of structures
+```go
+package foo
+import "stdio"
+
+struct Foo {
+     char *msg;
+     int count;
+     ...
+}
+
+int main(){
+     let f = Foo::create();
+     delete f;
+     ...
+}
+```
+is trancompiled into
+
+```C
+//foo.h
+
+#ifndef FOO_H
+#define FOO_H
+
+#include "stdio.h"
+
+struct Foo {
+     char *msg;
+}
+
+struct Foo *Foo_create();
+
+#endif FOO_H
+```
+
+```C
+//foo.c
+
+struct Foo *Foo_create() {
+     ...
+}
+
+void Foo_delete(struct Foo *self) {
+     free(f.msg);
+     free(f);
+}
+
+int main() {
+     struct Foo *f = Foo_create();
+     f.delete();
      ...
 }
 ```
