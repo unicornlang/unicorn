@@ -122,6 +122,32 @@ int main() {
 }
 ```
 
+# Partial Structures
+Structures can be split up across multiple files within the same package
+```go
+package bar
+
+struct Bar {
+     char *msg
+     
+     foo(self){
+          ...
+     }
+}
+```
+
+```go
+package bar
+
+struct Bar {
+     int count
+     
+     boo(self){
+          ...
+     }
+}
+```
+
 # Useful Macros
 
 Unicorn provides macros for efficient structured data.
@@ -248,7 +274,7 @@ export void foo(bytes data){
 //foo.c
 
 __attribute__((visibility("default"))) void foo(char *data){
-     
+     ...
 }
 ```
 
@@ -257,7 +283,7 @@ Easily specify a package initializer that runs before main is called
 ```go
 package foo
 
-str secret;
+char *secret;
 
 init {
      secret = "open sesame"
@@ -267,7 +293,7 @@ init {
 ```C
 //foo.c
 
-char * secret;
+char *secret;
 
 __attribute__ ((constructor)) void __foo_package_init(){
      secret = "open sesame";
