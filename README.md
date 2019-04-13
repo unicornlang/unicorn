@@ -138,7 +138,7 @@ package bar
 struct Bar {
      int count
      
-     boo(self){
+     pub boo(self){
           ...
      }
 }
@@ -157,7 +157,6 @@ struct Bar {
      int count;
 }
 
-void Bar_foo();
 void Bar_boo();
 
 #endif BAR_H
