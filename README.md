@@ -10,7 +10,7 @@ unicorn .  #process all .u files in this directory and subdirectories
 # Packaging
 Unicorn files specify what package they belong to. Other files in the same directory with the same package will be compiled into the same `<package-name>.h` and `<package-name>.c` files. This allows your logic to be segmented into multiple files.
 
-```rust  
+```go  
 //foo.u
 package foo
 
@@ -19,7 +19,7 @@ pub void foo(){
 }
 ```
 
-```rust 
+```go 
 //bar.u
 package foo
 
@@ -43,9 +43,9 @@ void bar(){
 ```
 
 # Structure Methods
-```rust
+```go
 package foo
-use "stdio"
+import "stdio"
 
 struct Foo {
      str msg;
@@ -120,11 +120,11 @@ int main() {
 Unicorn provides macros for efficient structured data.
 
 ## JSON
-```rust
+```go
 package foo
 
-use "stdio"
-use "json"
+import "stdio"
+import "json"
 
 int main(){
      let name = "John";
@@ -170,11 +170,11 @@ int main(){
 }
 ```
 ## JSX
-```rust
+```go
 package foo
 
-use "stdio"
-use "vnode"
+import "stdio"
+import "vnode"
 
 VNode * component(){
      return html!(<div>Hello World<div>)
@@ -220,7 +220,7 @@ VNode * component(){
 
 # Mutability enforcement
 
-```rust
+```go
 package foo
 
 int main(){
@@ -233,7 +233,7 @@ int main(){
 
 # Ownership enforcement
 
-```rust
+```go
 package foo
 
 void a(ref Foo *f){
@@ -254,7 +254,7 @@ int main(){
 
 # Exporting 
 
-```rust
+```go
 package foo
 
 export void foo(bytes data){
