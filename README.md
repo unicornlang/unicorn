@@ -7,8 +7,41 @@ Unicorn can be used totally side by side with normal C and abandoned easily (if 
 ```bash
 unicorn .  #process all .u files in this directory and subdirectories
 ```
+# Packaging
+Unicorn files specify what package they belong to. Other files in the same directory with the same package will be compiled into the same `<package-name>.h` and `<package-name>.c` files. This allows your logic to be segmented into multiple files.
 
-Example:
+```rust  
+//foo.u
+package foo
+
+pub void foo(){
+     ...
+}
+```
+```rust 
+//bar.u
+package foo
+
+void bar(){
+     ...
+}
+```
+transcompiles to:
+```
+// foo.h
+void foo();
+```
+
+// foo.c
+void foo(){
+     ...
+}
+void bar(){
+     ...
+}
+```
+
+# Structure Methods
 ```rust
 package foo
 use "stdio"
