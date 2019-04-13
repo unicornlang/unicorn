@@ -1,6 +1,6 @@
 # Unicorn🦄
 
-Unicorn is a programming language that trancompiles to object oriented C code that is idiomatic and readable. The `unicorn` command also offers a library agnostic helper macro for JSON and JSX, data mutability and ownership checks, and can generate documentation that uses markdown.
+Unicorn is a programming language that trancompiles to object oriented C code that is idiomatic and readable. The `unicorn` command also offers a library agnostic helper macro for JSON and JSX, and can generate documentation that uses markdown.
 
 Unicorn can be used totally side by side with normal C and abandoned easily (if more distraction than it's worth) leaving clean readable C. Linguistically, unicorn is a superset of C99 and does not hamper your ability to write C99 and is primarily oriented toward structure, inferences, checks, and shortcuts of the existing spec. This project is meant to augment one's experience with C.
 
@@ -58,18 +58,18 @@ struct Foo {
      str msg;
      
      pub Foo* create() {
-        let mut f = new Foo;
+        let f = new Foo;
         f.x = "Foo";
         return f;
      }
      
-     void blah(ref self) {
+     void blah(self) {
         printf(self.f)
      }
 }
 
 int main(){
-     let mut f = Foo::create();
+     let f = Foo::create();
      f.blah();
      delete f;
      return 0;
@@ -225,37 +225,12 @@ VNode * component(){
 }
 ```
 
-# Mutability enforcement
-
-```go
-package foo
-
-int main(){
-     let mut b = 1;
-     b = 2; // works
-     let a = 1;
-     a = 2; // Error: a not mutable
-}
-```
-
-# Ownership enforcement
-
-```go
-package foo
-
-void a(ref Foo *f){
-     ...
-}
-
-void b(Foo *f){
-     ...
-}
-
+# Let 
+To the best of unicorn's ability we'll try to find the implied type
+```go 
 int main(){
      let f = Foo::create();
-     a(f);
-     b(f);
-     b(f); // Error: used variable after claimed ownership
+     ...
 }
 ```
 
@@ -273,7 +248,7 @@ export void foo(bytes data){
 //foo.c
 
 __attribute__((visibility("default"))) void foo(char *data){
-     ...
+     
 }
 ```
 
