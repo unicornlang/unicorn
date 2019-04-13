@@ -18,6 +18,7 @@ pub void foo(){
      ...
 }
 ```
+
 ```rust 
 //bar.u
 package foo
@@ -27,11 +28,11 @@ void bar(){
 }
 ```
 transcompiles to:
-```
+```C
 // foo.h
 void foo();
 ```
-
+```C
 // foo.c
 void foo(){
      ...
