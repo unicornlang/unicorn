@@ -10,6 +10,7 @@ unicorn foo.u -o foo.c
 
 Example:
 ```rust
+package foo
 use "stdio"
 
 struct Foo {
@@ -86,7 +87,7 @@ Unicorn provides macros for efficient structured data.
 
 ## JSON
 ```rust
-//foo.u
+package foo
 
 use "stdio"
 use "json"
@@ -136,7 +137,7 @@ int main(){
 ```
 ## JSX
 ```rust
-//foo.u
+package foo
 
 use "stdio"
 use "vnode"
@@ -186,7 +187,8 @@ VNode * component(){
 # Mutability enforcement
 
 ```rust
-//foo.u
+package foo
+
 int main(){
      let mut b = 1;
      b = 2; // works
@@ -198,6 +200,8 @@ int main(){
 # Ownership enforcement
 
 ```rust
+package foo
+
 void a(ref Foo *f){
      ...
 }
@@ -206,7 +210,6 @@ void b(Foo *f){
      ...
 }
 
-//foo.u
 int main(){
      let f = Foo::create();
      a(f);
@@ -218,6 +221,8 @@ int main(){
 # Exporting 
 
 ```rust
+package foo
+
 export void foo(bytes data){
      ...
 }
