@@ -11,7 +11,7 @@ unicorn .  #process all .u files in this directory and subdirectories
 # Structure Methods
 Methods can now be placed in structures to cognitively align your function names with code files.
 
-```go
+```nim
 import "stdio"
 
 Foo:
@@ -58,7 +58,7 @@ __attribute__((visibility("default"))) int main() {
 # Easy Exposure
 Say you have a function in your module you'd like others to use
 
-```go
+```nim
 # useful.u
 Thing*:
      msg string
@@ -67,7 +67,7 @@ my_useful_function*() Thing{
 }
 ```
 
-```go
+```nim
 # main.u
 import "useful_thing"
 
