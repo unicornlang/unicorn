@@ -111,157 +111,27 @@ int main() {
 }
 ```
 
-# Useful Macros
+# Powerful Macros
 
-Unicorn provides macros for efficient structured data.
+Unicorn provides macros that defer to local programs. Assume you have a program on your system called `reversestr` that reverse a string given to it:
 
-## JSON
-```go
-package foo
+```console
+echo "hello" | reversestr # olleh
+```
 
+Unicorn compiler can be instructed to use that for macro calls it encounters during compilation:
+
+```
 import "stdio"
-import "json"
 
-int main(){
-     let name = "John";
-     let data = json!({
-          foo:1,
-          bar:"abc",
-          name:name
-     });
-     printf(data.get("name").as_str());
-     return 0;
-}
+main()
+     printf(reverse!("hello"))
 ```
 
-trancompiles to
-
-```C
-//foo.h
-
-#ifndef FOO_H
-#define FOO_H
-
-#include "stdio.h"
-#include "json.h"
-
-#endif FOO_H
+```
+unicorn --m reverse:reversestr .
 ```
 
-```C
-//foo.c
-
-#include "foo.h"
-
-int main(){
-     struct JSON *data;
-     char *name;
-     name = "John";
-     data = JSON_new();
-     data.set_number("foo",1);
-     data.set_string("bar","abc");
-     data.set_string("name",name);
-     printf(data.get("name").as_str());
-     return 0;
-}
-```
-## JSX
-```go
-package foo
-
-import "stdio"
-import "vnode"
-
-VNode * component(){
-     return html!(<div>Hello World<div>)
-}
-```
-
-trancompiles to
-
-```C
-//foo.h
-
-#ifndef FOO_H
-#define FOO_H
-
-#include "stdio.h"
-#include "vnode.h"
-
-#endif FOO_H
-```
-
-```C
-//foo.c
-
-#include "foo.h"
-
-VNode * component(){
-     struct VNode *v0;
-     struct VNode **v0_children;
-     struct VNode *v1;
-     v1 = malloc(sizeof(VNode));
-     v1.type = VNODE_TEXT;
-     v1.text = "Hello World!";
-     v0_children = malloc(sizeof(VNode*)*2);
-     v0_children[0] = v1;
-     v0_children[1] = NULL;
-     v0 = malloc(sizeof(VNode);
-     v0.type = VNODE_NODE;
-     v0.props = NULL;
-     v0.children = v0_children;
-     return v0;
-}
-```
-
-# Let 
-To the best of unicorn's ability we'll try to find the implied type
-```go 
-int main(){
-     let f = Foo::create();
-     ...
-}
-```
-
-# Exporting 
-Easily export functions to users of your library.
-```go
-package foo
-
-export void foo(bytes data){
-     ...
-}
-```
-
-```C
-//foo.c
-
-__attribute__((visibility("default"))) void foo(char *data){
-     ...
-}
-```
-
-# Initialization 
-Easily specify a package initializer that runs before main is called
-```go
-package foo
-
-char *secret;
-
-init {
-     secret = "open sesame"
-}
-```
-
-```C
-//foo.c
-
-char *secret;
-
-__attribute__ ((constructor)) void __foo_package_init(){
-     secret = "open sesame";
-}
-```
 # Beautiful types
 `str` transpires to `char *`
 
