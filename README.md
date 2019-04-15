@@ -115,8 +115,6 @@ int main(){
 # Structure Deletion
 Structure deletion helps recursively free memory of structures
 ```go
-import "stdio"
-
 Foo:
      msg string
      count int
@@ -126,23 +124,11 @@ main()
      delete f
 ```
 is trancompiled into
-
 ```C
-//foo.h
-
-#ifndef FOO_H
-#define FOO_H
-
-#include "stdio.h"
-
 struct Foo {
      char *msg;
 }
-#endif FOO_H
-```
 
-```C
-//foo.c
 void Foo_delete(struct Foo *self) {
      free(self.msg);
      free(self);
