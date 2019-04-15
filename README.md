@@ -7,7 +7,7 @@ unicorn .  #process all .u files in this directory and subdirectories
 ```
 
 # Structure Methods
-Methods can now be placed in structures to cognitively align your function names with code files.
+Methods can be assocated with structures to allow ways to separate their usage from regular functions
 
 ```nim
 import "stdio"
