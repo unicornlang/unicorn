@@ -149,7 +149,7 @@ echo "\"hello\"" | reversestr # \"olleh\"
 
 `unicorn` can be instructed to use that program for macro calls it encounters during compilation:
 
-```
+```nim
 import "stdio"
 
 main()
