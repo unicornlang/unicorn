@@ -12,28 +12,20 @@ unicorn .  #process all .u files in this directory and subdirectories
 Methods can now be placed in structures to cognitively align your function names with code files.
 
 ```go
-package foo
 import "stdio"
 
-struct Foo {
-     str msg;
+Foo:
+     msg string
      
-     pub Foo* create() {
-        let f = new Foo;
-        f.x = "Foo";
-        return f;
-     }
+(Foo) create() Foo
+     Foo{"hey}
      
-     void blah(self) {
-        printf(self.f)
-     }
-}
-
-int main(){
-     let f = Foo::create();
-     f.blah();
-     ...
-}
+(Foo) blah(self)
+     printf(self.msg)
+     
+main()
+     f := Foo::create()
+     f.blah()
 ```
 is trancompiled into
 
