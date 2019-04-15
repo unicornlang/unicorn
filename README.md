@@ -24,7 +24,7 @@ main()
      f := Foo::create()
      f.blah()
 ```
-is trancompiled into
+is trancompiles to
 
 ```C
 #include "stdio.h"
@@ -74,7 +74,7 @@ main()
      ...
 ```
 
-will transpile to:
+will transpiles to
 
 ```C
 //useful.h
@@ -120,7 +120,7 @@ main()
      f := Foo{}
      delete f
 ```
-is trancompiled into
+is trancompiles to
 ```C
 struct Foo {
      char *msg;
@@ -160,107 +160,10 @@ unicorn --m reverse:reversestr .
 ```
 
 # Beautiful types
-`str` transpires to `char *`
+`str` transpiles to `char *`
 
-`byte` transpires to `char`
+`byte` transpiles to `char`
 
-`bytes` transpires to `char *`
+`bytes` transpiles to `char *`
 
-`bool` transpires to `_Bool`
-
-# Packaging
-By default a files package is it's file name. Unicorn files can also specify what package they belong to in the frst line. Other files in the same directory with the same package will be compiled into the same `<package-name>.h` and `<package-name>.c` files. This allows your logic to be segmented into multiple files.
-
-```go  
-//foo.u
-package foo
-
-foo*()
-     ...
-```
-
-```go 
-//bar.u
-package foo
-
-bar()
-     ...
-```
-transcompiles to:
-```C
-// foo.h
-
-#ifndef FOO_H
-#define FOO_H
-
-void foo();
-
-#endif
-```
-```C
-// foo.c
-void foo(){
-     ...
-}
-
-void bar(){
-     ...
-}
-```
-
-
-# Partial Structures
-Structures can be split up across multiple files within the same package
-```go
-package bar
-
-struct Bar {
-     char *msg
-     
-     foo(self){
-          ...
-     }
-}
-```
-
-```go
-package bar
-
-struct Bar {
-     int count
-     
-     pub boo(self){
-          ...
-     }
-}
-```
-
-is trancompiled into
-
-```C
-//foo.h
-
-#ifndef BAR_H
-#define BAR_H
-
-struct Bar {
-     char *msg;
-     int count;
-}
-
-void Bar_boo();
-
-#endif BAR_H
-```
-
-```C
-//foo.c
-
-void Bar_foo() {
-     ...
-}
-
-void Bar_boo() {
-     ...
-}
-```
+`bool` transpiles to `_Bool`
