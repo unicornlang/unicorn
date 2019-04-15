@@ -9,15 +9,15 @@ unicorn .  #process all .u files in this directory and subdirectories
 ```
 
 # Structure Methods
-Methods can now be placed in structures to cognitively align your function names with code files.
+Methods can now be placed in structures to cognitively align your function names with code files. Note that the `*` is used to expose something to other packages in your application.
 
 ```go
 import "stdio"
 
-Foo:
+Foo*:
      msg string
      
-(Foo) create() Foo
+(Foo) create*() Foo
      Foo{"hey"}
      
 (Foo) blah(self)
