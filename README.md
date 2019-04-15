@@ -48,10 +48,66 @@ void Foo_blah(struct Foo *self) {
      return;
 }
 
-int main() {
+__attribute__((visibility("default"))) int main() {
      struct Foo *f = Foo_create();
      f.blah();
      return 0;
+}
+```
+
+# Easy Exposure
+Say you have a function in your module you'd like others to use
+
+```go
+# useful.u
+Thing*:
+     msg string
+my_useful_function*() Thing{
+     Thing{"foo"}
+}
+```
+
+```go
+# main.u
+import "useful_thing"
+
+main()
+     f := my_useful_function()
+     ...
+```
+
+will transpile to:
+
+```C
+//useful.h
+
+#ifndef USEFUL_H
+#define USEFUL_H
+
+struct Thing {
+     char *msg;
+}
+
+struct Thing* my_useful_function();
+
+#endif USEFUL_H
+```
+```C
+//useful.c
+
+struct Thing* my_useful_function(){
+     struct Thing *t = malloc(sizeof(Thing));
+     t.msg = "blah";
+     return t;
+}
+```
+```C
+//main.c
+#include "useful.h"
+
+int main(){
+     struct Thing *f = my_useful_function();
+     ...
 }
 ```
 
