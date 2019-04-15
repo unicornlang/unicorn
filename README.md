@@ -18,7 +18,7 @@ Foo:
      msg string
      
 (Foo) create() Foo
-     Foo{"hey}
+     Foo{"hey"}
      
 (Foo) blah(self)
      printf(self.msg)
