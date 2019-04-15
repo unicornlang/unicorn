@@ -68,63 +68,6 @@ int main() {
 }
 ```
 
-# Partial Structures
-Structures can be split up across multiple files within the same package
-```go
-package bar
-
-struct Bar {
-     char *msg
-     
-     foo(self){
-          ...
-     }
-}
-```
-
-```go
-package bar
-
-struct Bar {
-     int count
-     
-     pub boo(self){
-          ...
-     }
-}
-```
-
-is trancompiled into
-
-```C
-//foo.h
-
-#ifndef BAR_H
-#define BAR_H
-
-struct Bar {
-     char *msg;
-     int count;
-}
-
-void Bar_boo();
-
-#endif BAR_H
-```
-
-```C
-//foo.c
-
-void Bar_foo() {
-     ...
-}
-
-void Bar_boo() {
-     ...
-}
-```
-
-
 # Structure Deletion
 Structure deletion helps recursively free memory of structures
 ```go
@@ -377,6 +320,63 @@ void foo(){
 }
 
 void bar(){
+     ...
+}
+```
+
+
+# Partial Structures
+Structures can be split up across multiple files within the same package
+```go
+package bar
+
+struct Bar {
+     char *msg
+     
+     foo(self){
+          ...
+     }
+}
+```
+
+```go
+package bar
+
+struct Bar {
+     int count
+     
+     pub boo(self){
+          ...
+     }
+}
+```
+
+is trancompiled into
+
+```C
+//foo.h
+
+#ifndef BAR_H
+#define BAR_H
+
+struct Bar {
+     char *msg;
+     int count;
+}
+
+void Bar_boo();
+
+#endif BAR_H
+```
+
+```C
+//foo.c
+
+void Bar_foo() {
+     ...
+}
+
+void Bar_boo() {
      ...
 }
 ```
