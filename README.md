@@ -75,7 +75,7 @@ import "stdio"
 
 Foo:
      msg string
-     count i32
+     count int
 
 main()
      f := Foo{}
