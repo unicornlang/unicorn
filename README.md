@@ -24,7 +24,8 @@ main()
      f := Foo::create()
      f.blah()
 ```
-is trancompiles to
+
+trancompiles to
 
 ```C
 #include "stdio.h"
@@ -74,7 +75,7 @@ main()
      ...
 ```
 
-will transpiles to
+transpiles to
 
 ```C
 //useful.h
