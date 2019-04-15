@@ -53,7 +53,7 @@ __attribute__((visibility("default"))) int main() {
 ```
 
 # Easy Exposure
-Say you have a function in your module you'd like others to use
+Unicorn uses the `*` symbol to expose function, structs, etc. in your module you'd like other modules to use
 
 ```nim
 # useful.u
