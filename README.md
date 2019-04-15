@@ -9,15 +9,15 @@ unicorn .  #process all .u files in this directory and subdirectories
 ```
 
 # Structure Methods
-Methods can now be placed in structures to cognitively align your function names with code files. The `*` symbol is used to expose something to other modules in your application.
+Methods can now be placed in structures to cognitively align your function names with code files.
 
 ```go
 import "stdio"
 
-Foo*:
+Foo:
      msg string
      
-(Foo) create*() Foo
+(Foo) create() Foo
      Foo{"hey"}
      
 (Foo) blah(self)
@@ -30,24 +30,11 @@ main()
 is trancompiled into
 
 ```C
-//foo.h
-
-#ifndef FOO_H
-#define FOO_H
-
-#include "stdio.h"
+//foo.c
 
 struct Foo {
      char *msg;
 }
-
-struct Foo *Foo_create();
-
-#endif FOO_H
-```
-
-```C
-//foo.c
 
 struct Foo *Foo_create() {
      struct Foo *f;
