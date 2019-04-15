@@ -8,48 +8,6 @@ Unicorn can be used totally side by side with normal C and abandoned easily (if 
 unicorn .  #process all .u files in this directory and subdirectories
 ```
 
-# Packaging
-Unicorn files specify what package they belong to. Other files in the same directory with the same package will be compiled into the same `<package-name>.h` and `<package-name>.c` files. This allows your logic to be segmented into multiple files.
-
-```go  
-//foo.u
-package foo
-
-pub void foo(){
-     ...
-}
-```
-
-```go 
-//bar.u
-package foo
-
-void bar(){
-     ...
-}
-```
-transcompiles to:
-```C
-// foo.h
-
-#ifndef FOO_H
-#define FOO_H
-
-void foo();
-
-#endif
-```
-```C
-// foo.c
-void foo(){
-     ...
-}
-
-void bar(){
-     ...
-}
-```
-
 # Structure Methods
 Methods can now be placed in structures to cognitively align your function names with code files.
 
@@ -383,7 +341,50 @@ __attribute__ ((constructor)) void __foo_package_init(){
 }
 ```
 # Beautiful types
+`str` transpires to `char *`
 
 `byte` transpires to `char`
 
+`bytes` transpires to `char *`
+
 `bool` transpires to `_Bool`
+
+# Packaging
+By default a files package is it's file name. Unicorn files can also specify what package they belong to in the frst line. Other files in the same directory with the same package will be compiled into the same `<package-name>.h` and `<package-name>.c` files. This allows your logic to be segmented into multiple files.
+
+```go  
+//foo.u
+package foo
+
+foo*()
+     ...
+```
+
+```go 
+//bar.u
+package foo
+
+bar()
+     ...
+```
+transcompiles to:
+```C
+// foo.h
+
+#ifndef FOO_H
+#define FOO_H
+
+void foo();
+
+#endif
+```
+```C
+// foo.c
+void foo(){
+     ...
+}
+
+void bar(){
+     ...
+}
+```
