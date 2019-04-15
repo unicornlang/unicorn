@@ -176,3 +176,7 @@ int main() {
 `bytes` transpiles to `char *`
 
 `bool` transpiles to `_Bool`
+
+# Basic Operations
+
+`* + \ % += -= << >> (int) (float)` work as they do in C
