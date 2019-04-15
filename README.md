@@ -1,8 +1,6 @@
 # Unicorn🦄
 
-Unicorn is a programming language that trancompiles to object oriented C code that is idiomatic and readable. The `unicorn` command also offers a library agnostic helper macro for JSON and JSX, and can generate documentation that uses markdown.
-
-Unicorn can be used totally side by side with normal C and abandoned easily (if more distraction than it's worth) leaving clean readable C. Linguistically, unicorn is a superset of C99 and does not hamper your ability to write C99 and is primarily oriented toward structure, inferences, and utility macros. This project is meant to augment one's experience with C.
+Unicorn is a programming language that trancompiles to object oriented C code that is idiomatic and readable. Unicorn can be used side by side with C99.
 
 ```bash
 unicorn .  #process all .u files in this directory and subdirectories
