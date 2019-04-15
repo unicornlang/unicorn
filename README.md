@@ -93,6 +93,7 @@ struct Thing* Thing_my_useful_function();
 ```
 ```C
 //useful.c
+#include "useful.h"
 
 struct Thing* Thing_my_useful_function(){
      struct Thing *t = malloc(sizeof(Thing));
