@@ -30,6 +30,8 @@ main()
 is trancompiled into
 
 ```C
+#include "stdio.h"
+
 struct Foo {
      char *msg;
 }
