@@ -3,7 +3,7 @@
 Unicorn is a programming language that trancompiles to object oriented C code that is idiomatic and readable. It's primarily meant to target a subset of C useful for web assembly but it's a generally useful subset for other purposes. Unicorn can be used side by side with C99.
 
 ```bash
-unicorn .  #process all .u files in this directory and subdirectories
+unicorn .  #transpile all .u files in this directory and subdirectories
 ```
 
 # Structure Methods
