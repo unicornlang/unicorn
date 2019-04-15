@@ -141,13 +141,13 @@ int main() {
 
 # Powerful Macros
 
-Unicorn provides macros that defer to local programs. Assume you have a program on your system called `reversestr` that reverse a string given to it:
+Unicorn provides macros that defer to local programs. Assume you have a program on your system called `reversestr` that reverses a string given to it:
 
 ```console
-echo "hello" | reversestr # olleh
+echo "\"hello\"" | reversestr # \"olleh\"
 ```
 
-Unicorn compiler can be instructed to use that for macro calls it encounters during compilation:
+`unicorn` can be instructed to use that program for macro calls it encounters during compilation:
 
 ```
 import "stdio"
@@ -158,6 +158,14 @@ main()
 
 ```
 unicorn --m reverse:reversestr .
+```
+
+```C
+#include "stdio.h"
+
+int main() {
+     printf("olleh");
+}
 ```
 
 # Beautiful types
