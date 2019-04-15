@@ -62,7 +62,8 @@ Say you have a function in your module you'd like others to use
 # useful.u
 Thing*:
      msg string
-my_useful_function*() Thing{
+     
+(Thing) my_useful_function*() Thing{
      Thing{"foo"}
 }
 ```
@@ -72,7 +73,7 @@ my_useful_function*() Thing{
 import "useful_thing"
 
 main()
-     f := my_useful_function()
+     f := Thing::my_useful_function()
      ...
 ```
 
@@ -88,14 +89,14 @@ struct Thing {
      char *msg;
 }
 
-struct Thing* my_useful_function();
+struct Thing* Thing_my_useful_function();
 
 #endif USEFUL_H
 ```
 ```C
 //useful.c
 
-struct Thing* my_useful_function(){
+struct Thing* Thing_my_useful_function(){
      struct Thing *t = malloc(sizeof(Thing));
      t.msg = "blah";
      return t;
@@ -106,7 +107,7 @@ struct Thing* my_useful_function(){
 #include "useful.h"
 
 int main(){
-     struct Thing *f = my_useful_function();
+     struct Thing *f = Thing_my_useful_function();
      ...
 }
 ```
