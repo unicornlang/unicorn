@@ -71,20 +71,15 @@ int main() {
 # Structure Deletion
 Structure deletion helps recursively free memory of structures
 ```go
-package foo
 import "stdio"
 
-struct Foo {
-     char *msg;
-     int count;
-     ...
-}
+Foo:
+     msg string
+     count i32
 
-int main(){
-     let f = Foo::create();
-     delete f;
-     ...
-}
+main()
+     f := Foo{}
+     delete f
 ```
 is trancompiled into
 
@@ -99,26 +94,18 @@ is trancompiled into
 struct Foo {
      char *msg;
 }
-
-struct Foo *Foo_create();
-
 #endif FOO_H
 ```
 
 ```C
 //foo.c
-
-struct Foo *Foo_create() {
-     ...
-}
-
 void Foo_delete(struct Foo *self) {
-     free(f.msg);
-     free(f);
+     free(self.msg);
+     free(self);
 }
 
 int main() {
-     struct Foo *f = Foo_create();
+     struct Foo *f = malloc(sizeof(Foo));
      f.delete();
      ...
 }
