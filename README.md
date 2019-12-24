@@ -1,6 +1,6 @@
 # Unicorn🦄
 
-Unicorn is a programming language that trancompiles to object oriented style C code that is idiomatic and readable. It's primarily meant to target a subset of C that is efficient and useful for web assembly but it is a generally useful subset for other purposes. Unicorn can be used side by side with C99.
+Unicorn is a programming language that trancompiles to Rust. It's primarily meant to target a subset of Rust that is efficient and useful for web assembly in ways the Rust is not by default.
 
 ```bash
 unicorn .  #transpile all .u files in this directory and subdirectories
