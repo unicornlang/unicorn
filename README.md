@@ -54,13 +54,19 @@ void Foo_blah(struct Foo *self) {
      return;
 }
 
+void Foo_delete(struct Foo *self) {
+     self.__refCount -= 1;
+     if(self.__refCount == 0){
+          free(self.msg);
+          free(self);
+     }
+}
+
 __attribute__((visibility("default"))) int main() {
      struct Foo *f = Foo_create();
      f.blah();
      f.__refCount -= 1;
-     if(f.__refCount == 0){
-          delete f;
-     }
+     Foo_delete(f);
      return 0;
 }
 ```
@@ -128,13 +134,15 @@ int main(){
 # Structure Deletion
 Structure deletion helps recursively free memory of structures
 ```go
+
+
 Foo:
      msg string
      count int
 
-main()
+main() {
      f := Foo{}
-     delete f
+}
 ```
 is trancompiles to
 ```C
@@ -143,14 +151,16 @@ struct Foo {
 }
 
 void Foo_delete(struct Foo *self) {
-     free(self.msg);
-     free(self);
+     self.__refCount -= 1;
+     if(self.__refCount == 0){
+          free(self.msg);
+          free(self);
+     }
 }
 
 int main() {
      struct Foo *f = malloc(sizeof(Foo));
-     f.delete();
-     ...
+     Foo_delete(f);
 }
 ```
 
