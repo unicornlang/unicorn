@@ -8,6 +8,7 @@ unicorn .  #transpile all .u files in this directory and subdirectories
 * easy OOP
 * automatic reference counting
 * type inference
+* powerful macros
 
 # Structure Methods
 
