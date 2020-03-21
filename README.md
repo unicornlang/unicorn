@@ -5,6 +5,9 @@ Unicorn is a programming language that trancompiles to Rust. It's primarily mean
 ```bash
 unicorn .  #transpile all .u files in this directory and subdirectories
 ```
+* easy OOP
+* automatic reference counting
+* type inference
 
 # Structure Methods
 
