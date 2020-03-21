@@ -37,12 +37,14 @@ trancompiles to
 #include "thing.h"
 
 struct Foo {
+     int __refCount;
      char *msg;
 }
 
 struct Foo *Foo_create() {
      struct Foo *f;
      f = malloc(sizeof(Foo));
+     f.__refCount = 1;
      f.msg = "Foo";
      return f;
 }
@@ -55,6 +57,10 @@ void Foo_blah(struct Foo *self) {
 __attribute__((visibility("default"))) int main() {
      struct Foo *f = Foo_create();
      f.blah();
+     f.__refCount -= 1;
+     if(f.__refCount == 0){
+          delete f;
+     }
      return 0;
 }
 ```
