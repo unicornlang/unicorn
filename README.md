@@ -96,6 +96,7 @@ transpiles to
 #define USEFUL_H
 
 struct Thing {
+     int __refCount;
      char *msg;
 }
 
@@ -109,6 +110,7 @@ struct Thing* Thing_my_useful_function();
 
 struct Thing* Thing_my_useful_function(){
      struct Thing *t = malloc(sizeof(Thing));
+     t.__refCount = 1;
      t.msg = "blah";
      return t;
 }
