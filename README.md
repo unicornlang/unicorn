@@ -39,12 +39,12 @@ struct Foo {
 struct Foo *Foo_create() {
      struct Foo *f;
      f = malloc(sizeof(Foo));
-     f.x = "Foo";
+     f.msg = "Foo";
      return f;
 }
 
 void Foo_blah(struct Foo *self) {
-     printf(self.f);
+     printf(self.msg);
      return;
 }
 
