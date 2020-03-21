@@ -18,10 +18,10 @@ import "thing"
 Foo:
      msg string
      
-(Foo*) create() Foo
+(Foo) create() Foo
      Foo{"hey"}
      
-(Foo*) blah(self)
+(Foo) blah(self)
      printf(self.msg)
      
 main()
@@ -66,7 +66,7 @@ Unicorn uses the `*` symbol to expose functions and structs in your module you'd
 Thing*:
      msg string
      
-(Thing*) my_useful_function*() Thing{
+(Thing) my_useful_function*() Thing{
      Thing{"foo"}
 }
 ```
