@@ -135,31 +135,47 @@ int main(){
 Structure deletion helps recursively free memory of structures
 ```go
 
+Bar:
+     msg string
 
 Foo:
-     msg string
-     count int
+     b Bar
 
 main() {
-     f := Foo{}
+     f := Foo{Bar{"hey"}}
 }
 ```
 is trancompiles to
 ```C
-struct Foo {
+struct Bar {
      char *msg;
+}
+
+void Bar_delete(struct Bar *self) {
+     self.__refCount -= 1;
+     if(self.__refCount == 0){
+          free(self);
+     }
+}
+
+
+struct Foo {
+     Bar *b;
 }
 
 void Foo_delete(struct Foo *self) {
      self.__refCount -= 1;
      if(self.__refCount == 0){
-          free(self.msg);
+          Bar_delete(self.b)
           free(self);
      }
 }
 
 int main() {
      struct Foo *f = malloc(sizeof(Foo));
+     struct Bar *_x0 = malloc(sizeof(Bar));
+     _x0.msg = "foo";
+     f.b = _x0;
      Foo_delete(f);
 }
 ```
