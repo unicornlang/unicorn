@@ -9,7 +9,8 @@ unicorn .  #transpile all .u files in this directory and subdirectories
 # Structure Methods
 
 ```nim
-import "stdio"
+import <stdio>
+import "thing"
 
 Foo:
      msg string
@@ -28,7 +29,8 @@ main()
 trancompiles to
 
 ```C
-#include "stdio.h"
+#include <stdio.h>
+#include "thing.h"
 
 struct Foo {
      char *msg;
